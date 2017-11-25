@@ -14,8 +14,8 @@ import rx.Observable;
 
 public class RestService implements RestApi {
 
-    private RestApi api;
     private final String URL = "BaseUrl";
+    private RestApi api;
 
     public RestService() {
         Retrofit retrofit = new Retrofit.Builder()

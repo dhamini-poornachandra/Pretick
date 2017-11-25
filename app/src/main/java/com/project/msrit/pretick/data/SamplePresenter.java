@@ -31,10 +31,10 @@ public class SamplePresenter implements SampleInterface.Presenter {
     private SampleInterface.View view;
 
     public SamplePresenter(
-        @NonNull RestApi restApi,
-        @NonNull Scheduler backgroundScheduler,
-        @NonNull Scheduler mainScheduler,
-        SampleInterface.View view) {
+            @NonNull RestApi restApi,
+            @NonNull Scheduler backgroundScheduler,
+            @NonNull Scheduler mainScheduler,
+            SampleInterface.View view) {
         this.restApi = restApi;
         this.backgroundScheduler = backgroundScheduler;
         this.mainScheduler = mainScheduler;
