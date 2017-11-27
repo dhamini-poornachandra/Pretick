@@ -12,6 +12,10 @@ import com.project.msrit.pretick.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Created by dhamini-poorna-chandra on 27/11/2017.
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.input_phone_no)
