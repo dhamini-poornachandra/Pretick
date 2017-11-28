@@ -15,6 +15,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Created by dhamini-poorna-chandra on 28/11/2017.
+ */
+
 public class SignUpActivity extends AppCompatActivity {
 
     @BindView(R.id.first_name)
