@@ -38,7 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
 
             if (getCurrentFocus() != null) {
-                if (!phoneNumber.getText().toString().equals("") && !password.getText().toString().equals("")) {
+                if (!phoneNumber.getText().toString().equals("") && !password.getText().toString().equals("")
+                        && phoneNumber.getText().toString().length() == 10) {
                     loginButton.setEnabled(true);
                     loginButton.setAlpha(1.0f);
                 } else {
