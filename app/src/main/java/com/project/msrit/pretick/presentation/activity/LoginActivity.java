@@ -1,5 +1,6 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import com.project.msrit.pretick.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by dhamini-poorna-chandra on 27/11/2017.
@@ -58,5 +60,11 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         phoneNumber.addTextChangedListener(watcher);
         password.addTextChangedListener(watcher);
+
+    }
+
+    @OnClick(R.id.link_signup)
+    public void signUp() {
+        startActivity(new Intent(this, SignupActivity.class));
     }
 }
