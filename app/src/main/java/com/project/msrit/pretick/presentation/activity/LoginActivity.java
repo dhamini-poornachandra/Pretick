@@ -65,6 +65,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.link_signup)
     public void signUp() {
-        startActivity(new Intent(this, SignupActivity.class));
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 }
