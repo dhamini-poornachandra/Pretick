@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
 
 import com.project.msrit.pretick.R;
 
@@ -96,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.login_button)
     public void login() {
-        Intent intent = new Intent(this, SearchTicketActivity.class);
+        Intent intent = new Intent(this, FacultyDashboardActivity.class);
         startActivity(intent);
     }
 }
