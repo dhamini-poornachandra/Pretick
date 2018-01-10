@@ -11,7 +11,7 @@ import rx.Observable;
 
 public interface RestApi {
 
-    @GET("sampleUrl/")
+    @GET("/posts/1")
     Observable<SampleResponseModel> getCharacters();
 
 }
