@@ -5,14 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.model.SampleResponseModel;
+import com.project.msrit.pretick.data.network.service.RestService;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by dhamini-poorna-chandra on 27/11/2017.
@@ -61,6 +67,31 @@ public class LoginActivity extends AppCompatActivity {
         phoneNumber.addTextChangedListener(watcher);
         password.addTextChangedListener(watcher);
 
+        login();
+    }
+
+    private void login() {
+        RestService rs = new RestService();
+        rs.getCharacters()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<SampleResponseModel>() {
+                    @Override
+                    public final void onCompleted() {
+                        // do nothing
+                    }
+
+                    @Override
+                    public final void onError(Throwable e) {
+                        Log.e("Demo", e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(SampleResponseModel sampleResponseModel) {
+                        Log.d("Got response", "sai ram");
+                    }
+
+                });
     }
 
     @OnClick(R.id.link_signup)

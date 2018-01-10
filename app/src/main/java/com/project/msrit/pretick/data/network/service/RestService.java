@@ -14,7 +14,7 @@ import rx.Observable;
 
 public class RestService implements RestApi {
 
-    private final String URL = "BaseUrl";
+    private final String URL = "https://jsonplaceholder.typicode.com";
     private RestApi api;
 
     public RestService() {
