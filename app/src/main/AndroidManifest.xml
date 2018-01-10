@@ -22,6 +22,9 @@
         </activity>
         <activity android:name=".presentation.activity.MainActivity" />
         <activity android:name=".presentation.activity.SignUpActivity" />
+        <activity android:name=".presentation.activity.SearchTicketActivity" />
+        <activity android:name=".presentation.activity.TicketListActivity" />
+        <activity android:name=".presentation.activity.FacultyDashboardActivity"></activity>
     </application>
 
 </manifest>
