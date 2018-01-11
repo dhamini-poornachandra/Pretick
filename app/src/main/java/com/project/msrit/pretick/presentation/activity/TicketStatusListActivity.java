@@ -12,11 +12,7 @@ import com.project.msrit.pretick.presentation.adapter.PendingTicketListAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by dhamini-poorna-chandra on 9/1/2018.
- */
-
-public class PendingTicketListActivity extends AppCompatActivity implements PendingTicketListAdapter.ItemClickListener {
+public class TicketStatusListActivity extends AppCompatActivity implements PendingTicketListAdapter.ItemClickListener {
 
     PendingTicketListAdapter adapter;
 
