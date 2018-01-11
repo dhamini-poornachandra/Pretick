@@ -3,26 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.project.msrit.pretick.presentation.activity.TicketListActivity">
+    tools:context="com.project.msrit.pretick.presentation.activity.PendingTicketListActivity">
 
     <Button
-        android:id="@+id/view_requests"
+        android:id="@+id/view_pending_requests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/create_request"
+        android:layout_above="@+id/view_approved_requests"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="79dp"
         android:background="@drawable/blue_border"
         android:padding="17dp"
-        android:text="View Requests" />
+        android:text="View Pending Requests" />
 
     <Button
-        android:id="@+id/create_request"
+        android:id="@+id/view_approved_requests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@drawable/blue_border"
         android:padding="10dp"
-        android:text="Create Requests" />
+        android:text="View Approved Requests" />
 </RelativeLayout>

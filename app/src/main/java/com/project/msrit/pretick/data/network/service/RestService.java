@@ -1,7 +1,7 @@
 package com.project.msrit.pretick.data.network.service;
 
 import com.project.msrit.pretick.data.network.interfaces.RestApi;
-import com.project.msrit.pretick.data.network.model.SampleResponseModel;
+import com.project.msrit.pretick.data.network.model.Role;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -14,7 +14,7 @@ import rx.Observable;
 
 public class RestService implements RestApi {
 
-    private final String URL = "https://jsonplaceholder.typicode.com";
+    private final String URL = "http://drcandt.com/";
     private RestApi api;
 
     public RestService() {
@@ -28,7 +28,12 @@ public class RestService implements RestApi {
     }
 
     @Override
-    public Observable<SampleResponseModel> getCharacters() {
-        return this.api.getCharacters();
+    public Observable<Role> postLogin(String username, String password) {
+        return this.api.postLogin(username, password);
+    }
+
+    @Override
+    public Observable<Role> getPendingTickets() {
+        return this.api.getPendingTickets();
     }
 }
