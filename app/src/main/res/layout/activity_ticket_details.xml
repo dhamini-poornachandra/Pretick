@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context="com.project.msrit.pretick.presentation.activity.TicketDetailsActivity">
+
+    <TextView
+        android:id="@+id/ticket_no_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ticket No: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/ticket_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ticket_no_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/org_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ticket_no_label"
+        android:layout_marginTop="5dp"
+        android:text="Organisation Name: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/org_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticket_no_label"
+        android:layout_toRightOf="@id/org_label"
+        android:paddingTop="5dp"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/org_label"
+        android:layout_marginTop="5dp"
+        android:text="Date: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/org_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/date_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/phone_number_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_label"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/org_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/date_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/start_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_label"
+        android:layout_marginTop="5dp"
+        android:text="Start Time: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/start_time_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/end_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_time_label"
+        android:layout_marginTop="5dp"
+        android:text="End Time: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_time_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/end_time_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/slot_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/end_time_label"
+        android:layout_marginTop="5dp"
+        android:text="Slot: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/slot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/end_time_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/slot_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/contactperson_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slot_label"
+        android:layout_marginTop="5dp"
+        android:text="Contact Person: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/contactperson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slot_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/contactperson_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/referenceapproval_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactperson_label"
+        android:layout_marginTop="5dp"
+        android:text="Reference Approval: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/referenceapproval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactperson_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/referenceapproval_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/adminapproval_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/referenceapproval_label"
+        android:layout_marginTop="5dp"
+        android:text="Admin Aproval: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/adminapproval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/referenceapproval_label"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/adminapproval_label"
+        android:textColor="#000"
+        android:textSize="20dp" />
+
+</RelativeLayout>

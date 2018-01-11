@@ -70,7 +70,6 @@ public class PendingTicketListAdapter extends RecyclerView.Adapter<PendingTicket
     // convenience method for getting data at click position
     public String getItem(int id) {
         return mData.get(id).getTicketno();
-
     }
 
     // allows clicks events to be caught

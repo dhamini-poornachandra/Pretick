@@ -27,7 +27,8 @@
         <activity android:name=".presentation.activity.FacultyDashboardActivity" />
         <activity android:name=".presentation.activity.RaiseTicketActivity" />
         <activity android:name=".presentation.activity.GuestDashboardActivity" />
-        <activity android:name=".presentation.activity.TicketStatusListActivity"></activity>
+        <activity android:name=".presentation.activity.TicketStatusListActivity" />
+        <activity android:name=".presentation.activity.TicketDetailsActivity"></activity>
     </application>
 
 </manifest>
