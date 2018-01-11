@@ -8,9 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.model.GlobalVariable;
 import com.project.msrit.pretick.presentation.adapter.PendingTicketListAdapter;
-
-import java.util.ArrayList;
 
 /**
  * Created by dhamini-poorna-chandra on 9/1/2018.
@@ -25,17 +24,10 @@ public class PendingTicketListActivity extends AppCompatActivity implements Pend
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_list);
 
-        // data to populate the RecyclerView with
-        ArrayList<String> tickets = new ArrayList<>();
-        tickets.add("Ticket No: 1524R42");
-        tickets.add("Ticket No: 616F62Y");
-        tickets.add("Ticket No: 95FD5RH");
-        tickets.add("Ticket No: MT56YH3");
-        tickets.add("Ticket No: P5G76JK");
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PendingTicketListAdapter(this, tickets);
+        adapter = new PendingTicketListAdapter(this, GlobalVariable.getInstance().getPendingTicketStatus());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }

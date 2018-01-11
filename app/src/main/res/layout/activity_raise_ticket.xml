@@ -14,7 +14,8 @@
         android:layout_alignBottom="@+id/set_date"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Start Date: " />
+        android:layout_marginRight="20dp"
+        android:text="Date: " />
 
     <Button
         android:id="@+id/set_date"
@@ -53,7 +54,7 @@
         android:layout_marginStart="14dp"
         android:layout_toEndOf="@+id/start_time"
         android:layout_toRightOf="@+id/start_time"
-        android:text="End Date: " />
+        android:text="End Time: " />
 
     <Button
         android:id="@+id/end_time"
@@ -117,7 +118,8 @@
         android:layout_below="@id/organisation_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:background="@drawable/blue_border"
+        android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:text="Raise Ticket" />
+        android:text="Raise Ticket"
+        android:textColor="#fff" />
 </RelativeLayout>

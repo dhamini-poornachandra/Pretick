@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
-import com.project.msrit.pretick.presentation.adapter.PendingTicketListAdapter;
+import com.project.msrit.pretick.presentation.adapter.TicketStatusListAdapter;
 
 import java.util.ArrayList;
 
-public class TicketStatusListActivity extends AppCompatActivity implements PendingTicketListAdapter.ItemClickListener {
+public class TicketStatusListActivity extends AppCompatActivity implements TicketStatusListAdapter.ItemClickListener {
 
-    PendingTicketListAdapter adapter;
+    TicketStatusListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class TicketStatusListActivity extends AppCompatActivity implements Pendi
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PendingTicketListAdapter(this, tickets);
+        adapter = new TicketStatusListAdapter(this, tickets);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }

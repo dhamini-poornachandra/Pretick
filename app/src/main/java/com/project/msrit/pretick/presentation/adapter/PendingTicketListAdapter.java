@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.model.Ticketstatus;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,12 +19,12 @@ import java.util.List;
 
 public class PendingTicketListAdapter extends RecyclerView.Adapter<PendingTicketListAdapter.ViewHolder> {
 
-    private List<String> mData = Collections.emptyList();
+    private List<Ticketstatus> mData = Collections.emptyList();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public PendingTicketListAdapter(Context context, List<String> data) {
+    public PendingTicketListAdapter(Context context, List<Ticketstatus> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -40,8 +41,8 @@ public class PendingTicketListAdapter extends RecyclerView.Adapter<PendingTicket
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         //set view data here
-        String ticketNum = mData.get(position);
-        holder.ticketNumber.setText(ticketNum);
+        String ticketNum = mData.get(position).getTicketno();
+        holder.ticketNumber.setText("Ticket No: " + ticketNum);
     }
 
     // total number of rows
@@ -68,7 +69,8 @@ public class PendingTicketListAdapter extends RecyclerView.Adapter<PendingTicket
 
     // convenience method for getting data at click position
     public String getItem(int id) {
-        return mData.get(id);
+        return mData.get(id).getTicketno();
+
     }
 
     // allows clicks events to be caught
