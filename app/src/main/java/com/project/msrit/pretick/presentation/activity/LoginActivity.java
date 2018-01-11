@@ -89,10 +89,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Role role) {
 
-                        if (role.getRole().equals("admin")) {
-                            startActivity(new Intent(getApplicationContext(), FacultyDashboardActivity.class));
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Enter valid login deatils", Toast.LENGTH_LONG).show();
+                        switch (role.getRole()) {
+                            case "admin":
+                                startActivity(new Intent(getApplicationContext(), FacultyDashboardActivity.class));
+                                break;
+                            case "guest":
+                                startActivity(new Intent(getApplicationContext(), GuestDashboardActivity.class));
+                                break;
+                            default:
+                                Toast.makeText(getApplicationContext(), "Enter valid login details", Toast.LENGTH_LONG).show();
+                                break;
                         }
 
                     }
