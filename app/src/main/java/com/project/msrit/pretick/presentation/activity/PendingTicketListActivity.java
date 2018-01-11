@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
-import com.project.msrit.pretick.presentation.adapter.TicketListAdapter;
+import com.project.msrit.pretick.presentation.adapter.PendingTicketListAdapter;
 
 import java.util.ArrayList;
 
@@ -16,14 +16,14 @@ import java.util.ArrayList;
  * Created by dhamini-poorna-chandra on 9/1/2018.
  */
 
-public class TicketListActivity extends AppCompatActivity implements TicketListAdapter.ItemClickListener {
+public class PendingTicketListActivity extends AppCompatActivity implements PendingTicketListAdapter.ItemClickListener {
 
-    TicketListAdapter adapter;
+    PendingTicketListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_list);
+        setContentView(R.layout.activity_pending_ticket_list);
 
         // data to populate the RecyclerView with
         ArrayList<String> tickets = new ArrayList<>();
@@ -35,7 +35,7 @@ public class TicketListActivity extends AppCompatActivity implements TicketListA
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TicketListAdapter(this, tickets);
+        adapter = new PendingTicketListAdapter(this, tickets);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }

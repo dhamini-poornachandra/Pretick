@@ -23,9 +23,9 @@ public class FacultyDashboardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.view_requests)
+    @OnClick(R.id.view_pending_requests)
     public void viewRequests() {
-        startActivity(new Intent(this, TicketListActivity.class));
+        startActivity(new Intent(this, PendingTicketListActivity.class));
     }
 
 }

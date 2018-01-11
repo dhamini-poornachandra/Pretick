@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context="com.project.msrit.pretick.presentation.activity.RaiseTicketActivity">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/set_date"
+        android:layout_alignBottom="@+id/set_date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Start Date: " />
+
+    <Button
+        android:id="@+id/set_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/date"
+        android:text="Set Date" />
+
+    <TextView
+        android:id="@+id/start_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/set_date"
+        android:layout_marginTop="30dp"
+        android:text="Start Time: " />
+
+    <Button
+        android:id="@+id/start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/start_time_text"
+        android:layout_alignBottom="@+id/start_time_text"
+        android:layout_toEndOf="@+id/start_time_text"
+        android:layout_toRightOf="@+id/start_time_text"
+        android:text="Start Time" />
+
+    <TextView
+        android:id="@+id/end_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/start_time"
+        android:layout_alignBottom="@+id/start_time"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/start_time"
+        android:layout_toRightOf="@+id/start_time"
+        android:text="End Date: " />
+
+    <Button
+        android:id="@+id/end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/start_time"
+        android:layout_alignBottom="@+id/start_time"
+        android:layout_toEndOf="@+id/end_time_text"
+        android:layout_toRightOf="@+id/end_time_text"
+        android:text="End Time" />
+
+    <TextView
+        android:id="@+id/invitee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/start_time_text"
+        android:layout_marginTop="50dp"
+        android:text="Invited By: " />
+
+    <Spinner
+        android:id="@+id/invitee_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/invitee"
+        android:layout_toEndOf="@+id/date"
+        android:layout_toRightOf="@+id/date" />
+
+    <RadioGroup
+        android:id="@+id/vehicle_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/invitee"
+        android:layout_marginTop="30dp">
+
+        <RadioButton
+            android:id="@+id/two_wheeler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 wheeler" />
+
+        <RadioButton
+            android:id="@+id/four_wheeler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="4 wheeler" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/organisation_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vehicle_type"
+        android:hint="Organisation Name"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/create_ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/organisation_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/blue_border"
+        android:padding="10dp"
+        android:text="Raise Ticket" />
+</RelativeLayout>

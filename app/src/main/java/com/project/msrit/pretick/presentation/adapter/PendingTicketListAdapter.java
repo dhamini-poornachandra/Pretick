@@ -16,14 +16,14 @@ import java.util.List;
  * Created by plank-dhamini on 11/01/18.
  */
 
-public class TicketListAdapter extends RecyclerView.Adapter<TicketListAdapter.ViewHolder> {
+public class PendingTicketListAdapter extends RecyclerView.Adapter<PendingTicketListAdapter.ViewHolder> {
 
     private List<String> mData = Collections.emptyList();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public TicketListAdapter(Context context, List<String> data) {
+    public PendingTicketListAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
