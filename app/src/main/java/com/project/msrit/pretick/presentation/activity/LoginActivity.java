@@ -1,6 +1,8 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     @BindView(R.id.login_button)
     Button loginButton;
+
+    private SharedPreferences.Editor loginPreferenceEditor;
 
     private final TextWatcher watcher = new TextWatcher() {
         @Override
@@ -88,6 +92,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Role role) {
+                        loginPreferenceEditor = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE).edit();
+                        loginPreferenceEditor.putString("username", phoneNumber.getText().toString()).apply();
+
+//                        SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+//                        password.setText(sharedPreferences.getString("username", ""));
 
                         switch (role.getRole()) {
                             case "admin":
