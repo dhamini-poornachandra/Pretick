@@ -19,9 +19,9 @@ public class GuestDashboardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.view_request_status)
+    @OnClick(R.id.view_ticket_status)
     public void viewRequestStatus() {
-
+        startActivity(new Intent(getApplicationContext(), TicketStatusListActivity.class));
     }
 
     @OnClick(R.id.raise_ticket)
