@@ -1,6 +1,9 @@
 package com.project.msrit.pretick.data.network.interfaces;
 
 import com.project.msrit.pretick.data.network.model.Role;
+import com.project.msrit.pretick.data.network.model.Ticketstatus;
+
+import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -16,6 +19,9 @@ public interface RestApi {
     @POST("/PreTick/login.php")
     Observable<Role> postLogin(@Query("username") String username, @Query("password") String password);
 
-    @GET("/PreTick/pendingTickets")
-    Observable<Role> getPendingTickets();
+    @GET("/PreTick/adminviewpnd.php")
+    Observable<List<Ticketstatus>> getPendingTickets();
+
+    @GET("/PreTick/adminviewaprd.php")
+    Observable<List<Ticketstatus>> getApprovedTickets();
 }
