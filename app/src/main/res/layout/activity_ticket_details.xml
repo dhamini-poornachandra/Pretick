@@ -191,4 +191,26 @@
         android:textColor="#000"
         android:textSize="20dp" />
 
+    <Button
+        android:id="@+id/approve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adminapproval"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:background="#228B22"
+        android:text="Approve"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/reject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/adminapproval"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="#FF0000"
+        android:text="Reject"
+        android:textColor="#fff" />
 </RelativeLayout>
