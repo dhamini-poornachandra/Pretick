@@ -22,12 +22,12 @@ import rx.schedulers.Schedulers;
  * Created by dhamini-poorna-chandra on 9/1/2018.
  */
 
-public class FacultyDashboardActivity extends AppCompatActivity {
+public class AdminDashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faculty_dashboard);
+        setContentView(R.layout.activity_admin_dashboard);
 
         ButterKnife.bind(this);
     }

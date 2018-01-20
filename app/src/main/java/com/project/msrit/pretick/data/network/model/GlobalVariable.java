@@ -12,6 +12,11 @@ public class GlobalVariable {
     private List<Ticketstatus> pendingTicketStatus;
     private List<Ticketstatus> approvedTicketStatus;
 
+    private List<Ticketstatus> facultyPendingTicketStatus;
+    private List<Ticketstatus> facultyApprovedTicketStatus;
+
+    private List<ContactPerson> contactPersons;
+
     private GlobalVariable() {
     }
 
@@ -36,5 +41,29 @@ public class GlobalVariable {
 
     public void setApprovedTicketStatus(List<Ticketstatus> approvedTicketStatus) {
         this.approvedTicketStatus = approvedTicketStatus;
+    }
+
+    public List<ContactPerson> getContactPersons() {
+        return contactPersons;
+    }
+
+    public void setContactPersons(List<ContactPerson> contactPersons) {
+        this.contactPersons = contactPersons;
+    }
+
+    public List<Ticketstatus> getFacultyPendingTicketStatus() {
+        return facultyPendingTicketStatus;
+    }
+
+    public void setFacultyPendingTicketStatus(List<Ticketstatus> facultyPendingTicketStatus) {
+        this.facultyPendingTicketStatus = facultyPendingTicketStatus;
+    }
+
+    public List<Ticketstatus> getFacultyApprovedTicketStatus() {
+        return facultyApprovedTicketStatus;
+    }
+
+    public void setFacultyApprovedTicketStatus(List<Ticketstatus> facultyApprovedTicketStatus) {
+        this.facultyApprovedTicketStatus = facultyApprovedTicketStatus;
     }
 }

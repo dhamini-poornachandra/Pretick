@@ -8,12 +8,19 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.service.RestService;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by dhamini-poorna-chandra on 28/11/2017.
@@ -69,7 +76,38 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void validateFields() {
         if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-            //send sign up request
+
+            RestService rs = new RestService();
+            rs.getSignUp(firstName.getText().toString(),
+                    lastName.getText().toString(),
+                    organisationName.getText().toString(),
+                    emailId.getText().toString(),
+                    password.getText().toString(),
+                    "student",
+                    phoneNumber.getText().toString())
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<retrofit2.Response<Void>>() {
+                        @Override
+                        public void onCompleted() {
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(retrofit2.Response<Void> response) {
+                            if (response.code() == HttpsURLConnection.HTTP_CREATED) {
+                                Toast.makeText(SignUpActivity.this, "Sign up success", Toast.LENGTH_LONG).show();
+                                login();
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Sign up failed", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    });
         } else {
             Snackbar snackbar = Snackbar
                     .make(getCurrentFocus(), "Passwords don't match", Snackbar.LENGTH_LONG);

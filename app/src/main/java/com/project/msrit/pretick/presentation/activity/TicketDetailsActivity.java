@@ -1,14 +1,25 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
+import com.project.msrit.pretick.data.network.service.RestService;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import retrofit2.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class TicketDetailsActivity extends AppCompatActivity {
 
@@ -38,6 +49,8 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
     @BindView(R.id.adminapproval)
     TextView adminApproval;
+
+    String approvalStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +85,56 @@ public class TicketDetailsActivity extends AppCompatActivity {
         adminApproval.setText(GlobalVariable.getInstance().getPendingTicketStatus()
                 .get(Integer.valueOf(getIntent().getStringExtra("row"))).getAdminapproval().toUpperCase());
 
+    }
+
+    @OnClick(R.id.approve)
+    public void approve() {
+        approvalStatus = "approved";
+        sendApproval();
+    }
+
+    @OnClick(R.id.reject)
+    public void reject() {
+        approvalStatus = "rejected";
+        sendApproval();
+    }
+
+    public void sendApproval() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        RestService rs = new RestService();
+        rs.postAdminTicketApproval(
+                ticketNo.getText().toString(),
+                approvalStatus,
+                date.getText().toString(),
+                startTime.getText().toString(),
+                endTime.getText().toString(),
+                sharedPreferences.getString("username", "9739626595"))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Response<Void>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(TicketDetailsActivity.this, "Approval failed", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onNext(retrofit2.Response<Void> response) {
+                        if (response.code() == HttpsURLConnection.HTTP_NOT_MODIFIED) {
+                            Toast.makeText(TicketDetailsActivity.this, "Approval failed " + response.code(), Toast.LENGTH_LONG).show();
+                        } else {
+                            adminApproval.setText(approvalStatus.toUpperCase());
+                            Toast.makeText(TicketDetailsActivity.this, "Approval success " + response.code(), Toast.LENGTH_LONG).show();
+                        }
+
+                        Log.d("Response code", String.valueOf(response.code()));
+
+                    }
+
+                });
     }
 }

@@ -3,13 +3,23 @@ package com.project.msrit.pretick.presentation.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.model.ContactPerson;
+import com.project.msrit.pretick.data.network.model.GlobalVariable;
+import com.project.msrit.pretick.data.network.service.RestService;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class GuestDashboardActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,15 +27,43 @@ public class GuestDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guest_dashboard);
 
         ButterKnife.bind(this);
+
     }
 
     @OnClick(R.id.view_ticket_status)
     public void viewRequestStatus() {
+
         startActivity(new Intent(getApplicationContext(), TicketStatusListActivity.class));
+
+
     }
 
     @OnClick(R.id.raise_ticket)
     public void raiseRequest() {
-        startActivity(new Intent(getApplicationContext(), RaiseTicketActivity.class));
+        RestService rs = new RestService();
+        rs.getContactPersons()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<ContactPerson>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(GuestDashboardActivity.this,
+                                "Failed to get contact person details", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onNext(List<ContactPerson> response) {
+                        GlobalVariable.getInstance().setContactPersons(response);
+                        startActivity(new Intent(getApplicationContext(), RaiseTicketActivity.class));
+
+
+                    }
+
+                });
+
     }
 }

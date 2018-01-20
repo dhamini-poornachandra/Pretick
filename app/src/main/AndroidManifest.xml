@@ -24,11 +24,14 @@
         <activity android:name=".presentation.activity.SignUpActivity" />
         <activity android:name=".presentation.activity.SearchTicketActivity" />
         <activity android:name=".presentation.activity.PendingTicketListActivity" />
-        <activity android:name=".presentation.activity.FacultyDashboardActivity" />
+        <activity android:name=".presentation.activity.AdminDashboardActivity" />
         <activity android:name=".presentation.activity.RaiseTicketActivity" />
         <activity android:name=".presentation.activity.GuestDashboardActivity" />
         <activity android:name=".presentation.activity.TicketStatusListActivity" />
-        <activity android:name=".presentation.activity.TicketDetailsActivity"></activity>
+        <activity android:name=".presentation.activity.TicketDetailsActivity" />
+        <activity android:name=".presentation.activity.FacultyDashBoardActivity" />
+        <activity android:name=".presentation.activity.FacultyPendingTicketsListActivity" />
+        <activity android:name=".presentation.activity.FacultyApprovedTicketsListActivity"></activity>
     </application>
 
 </manifest>

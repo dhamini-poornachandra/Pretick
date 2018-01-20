@@ -75,12 +75,12 @@
         android:text="Invited By: " />
 
     <Spinner
-        android:id="@+id/invitee_spinner"
+        android:id="@+id/inviter_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/invitee"
-        android:layout_toEndOf="@+id/date"
-        android:layout_toRightOf="@+id/date" />
+        android:layout_alignLeft="@+id/create_ticket"
+        android:layout_alignStart="@+id/create_ticket"
+        android:layout_alignTop="@+id/invitee" />
 
     <RadioGroup
         android:id="@+id/vehicle_type"
