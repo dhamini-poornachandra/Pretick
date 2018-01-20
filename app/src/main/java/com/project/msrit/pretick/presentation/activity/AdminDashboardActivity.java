@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
@@ -52,10 +53,43 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<Ticketstatus> ticketStatus) {
+                        if (ticketStatus != null) {
+                            GlobalVariable.getInstance().setAdminPendingTicketStatus(ticketStatus);
+                            startActivity(new Intent(getApplicationContext(), AdminPendingTicketListActivity.class));
+                        } else {
+                            Toast.makeText(AdminDashboardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
-                        GlobalVariable.getInstance().setPendingTicketStatus(ticketStatus);
-                        startActivity(new Intent(getApplicationContext(), PendingTicketListActivity.class));
+                });
+    }
 
+    @OnClick(R.id.view_approved_requests)
+    public void approvedRequests() {
+        RestService rs = new RestService();
+        rs.getApprovedTickets()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<Ticketstatus>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("failed faculty approved", "failed");
+                    }
+
+                    @Override
+                    public void onNext(List<Ticketstatus> response) {
+
+                        if (response != null) {
+                            GlobalVariable.getInstance().setAdminApprovedTicketStatus(response);
+
+                            startActivity(new Intent(AdminDashboardActivity.this, AdminApprovedTicketListActivity.class));
+                        } else {
+                            Toast.makeText(AdminDashboardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 });

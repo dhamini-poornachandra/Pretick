@@ -48,11 +48,6 @@ public class RestService implements RestApi {
     }
 
     @Override
-    public Observable<List<Ticketstatus>> getGuestTickets(String pnumber) {
-        return this.api.getGuestTickets(pnumber);
-    }
-
-    @Override
     public Observable<List<ContactPerson>> getContactPersons() {
         return this.api.getContactPersons();
     }
@@ -97,5 +92,15 @@ public class RestService implements RestApi {
     @Override
     public Observable<Response<Void>> postAdminTicketApproval(String ticketid, String status, String date, String starttime, String endtime, String userid) {
         return this.api.postAdminTicketApproval(ticketid, status, date, starttime, endtime, userid);
+    }
+
+    @Override
+    public Observable<Response<Void>> postFacultyTicketApproval(String ticketid, String status, String date, String starttime, String endtime, String userid) {
+        return this.api.postFacultyTicketApproval(ticketid, status, date, starttime, endtime, userid);
+    }
+
+    @Override
+    public Observable<List<Ticketstatus>> getGuestTicketRequests(String userid) {
+        return this.api.getGuestTicketRequests(userid);
     }
 }

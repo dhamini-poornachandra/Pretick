@@ -48,9 +48,6 @@ public interface RestApi {
                                                @Query("orgname") String orgname,
                                                @Query("pnumber") String pnumber);
 
-    @GET("/PreTick/guestviewaprd.php")
-    Observable<List<Ticketstatus>> getGuestTickets(@Query("pnumber") String pnumber);
-
     @GET("/PreTick/ticketdetails.php")
     Observable<Ticketstatus> getTicketDetails(@Query("ticketid") String ticketId);
 
@@ -68,4 +65,14 @@ public interface RestApi {
                                                        @Query("endtime") String endtime,
                                                        @Query("userid") String userid);
 
+    @GET("/PreTick/facultyticket.php")
+    Observable<Response<Void>> postFacultyTicketApproval(@Query("ticketid") String ticketid,
+                                                         @Query("status") String status,
+                                                         @Query("date") String date,
+                                                         @Query("starttime") String starttime,
+                                                         @Query("endtime") String endtime,
+                                                         @Query("userid") String userid);
+
+    @GET("/PreTick/tickets.php")
+    Observable<List<Ticketstatus>> getGuestTicketRequests(@Query("userid") String userid);
 }

@@ -14,32 +14,32 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by plank-dhamini on 11/01/18.
+ * Created by plank-dhamini on 21/01/18.
  */
 
-public class TicketStatusListAdapter extends RecyclerView.Adapter<TicketStatusListAdapter.ViewHolder> {
+public class ApprovedTicketListAdapter extends RecyclerView.Adapter<ApprovedTicketListAdapter.ViewHolder> {
 
     private List<Ticketstatus> mData = Collections.emptyList();
     private LayoutInflater mInflater;
-    private TicketStatusListAdapter.ItemClickListener mClickListener;
+    private ApprovedTicketListAdapter.ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public TicketStatusListAdapter(Context context, List<Ticketstatus> data) {
+    public ApprovedTicketListAdapter(Context context, List<Ticketstatus> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
     // inflates the row layout from xml when needed
     @Override
-    public TicketStatusListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ApprovedTicketListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
-        TicketStatusListAdapter.ViewHolder viewHolder = new TicketStatusListAdapter.ViewHolder(view);
+        ApprovedTicketListAdapter.ViewHolder viewHolder = new ApprovedTicketListAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     // binds the data in each row
     @Override
-    public void onBindViewHolder(TicketStatusListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ApprovedTicketListAdapter.ViewHolder holder, int position) {
         //set view data here
         String ticketNum = mData.get(position).getTicketno();
         holder.ticketNumber.setText("Ticket No: " + ticketNum);
@@ -73,7 +73,7 @@ public class TicketStatusListAdapter extends RecyclerView.Adapter<TicketStatusLi
     }
 
     // allows clicks events to be caught
-    public void setClickListener(TicketStatusListAdapter.ItemClickListener itemClickListener) {
+    public void setClickListener(ApprovedTicketListAdapter.ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
@@ -82,3 +82,5 @@ public class TicketStatusListAdapter extends RecyclerView.Adapter<TicketStatusLi
         void onItemClick(View view, int position);
     }
 }
+
+

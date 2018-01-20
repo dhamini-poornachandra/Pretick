@@ -1,11 +1,11 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
@@ -31,9 +31,10 @@ public class FacultyApprovedTicketsListActivity extends AppCompatActivity implem
 
     @Override
     public void onItemClick(View view, int position) {
-//        Intent intent = new Intent(this, TicketDetailsActivity.class);
-//        intent.putExtra("row", String.valueOf(position));
-//        startActivity(intent);
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, FacultyTicketDetailsActivity.class);
+        intent.putExtra("row", String.valueOf(position));
+        intent.putExtra("viewOnly", true);
+        startActivity(intent);
+//        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 }

@@ -9,11 +9,13 @@ import java.util.List;
 public class GlobalVariable {
     private static GlobalVariable instance;
 
-    private List<Ticketstatus> pendingTicketStatus;
-    private List<Ticketstatus> approvedTicketStatus;
+    private List<Ticketstatus> adminPendingTicketStatus;
+    private List<Ticketstatus> adminApprovedTicketStatus;
 
     private List<Ticketstatus> facultyPendingTicketStatus;
     private List<Ticketstatus> facultyApprovedTicketStatus;
+
+    private List<Ticketstatus> guestTicketStatus;
 
     private List<ContactPerson> contactPersons;
 
@@ -27,20 +29,20 @@ public class GlobalVariable {
         return instance;
     }
 
-    public void setPendingTicketStatus(List<Ticketstatus> pendingTicketStatus) {
-        this.pendingTicketStatus = pendingTicketStatus;
+    public void setAdminPendingTicketStatus(List<Ticketstatus> adminPendingTicketStatus) {
+        this.adminPendingTicketStatus = adminPendingTicketStatus;
     }
 
-    public List<Ticketstatus> getPendingTicketStatus() {
-        return pendingTicketStatus;
+    public List<Ticketstatus> getAdminPendingTicketStatus() {
+        return adminPendingTicketStatus;
     }
 
-    public List<Ticketstatus> getApprovedTicketStatus() {
-        return approvedTicketStatus;
+    public List<Ticketstatus> getAdminApprovedTicketStatus() {
+        return adminApprovedTicketStatus;
     }
 
-    public void setApprovedTicketStatus(List<Ticketstatus> approvedTicketStatus) {
-        this.approvedTicketStatus = approvedTicketStatus;
+    public void setAdminApprovedTicketStatus(List<Ticketstatus> adminApprovedTicketStatus) {
+        this.adminApprovedTicketStatus = adminApprovedTicketStatus;
     }
 
     public List<ContactPerson> getContactPersons() {
@@ -65,5 +67,13 @@ public class GlobalVariable {
 
     public void setFacultyApprovedTicketStatus(List<Ticketstatus> facultyApprovedTicketStatus) {
         this.facultyApprovedTicketStatus = facultyApprovedTicketStatus;
+    }
+
+    public List<Ticketstatus> getGuestTicketStatus() {
+        return guestTicketStatus;
+    }
+
+    public void setGuestTicketStatus(List<Ticketstatus> guestTicketStatus) {
+        this.guestTicketStatus = guestTicketStatus;
     }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.project.msrit.pretick.presentation.activity.PendingTicketListActivity">
+    tools:context="com.project.msrit.pretick.presentation.activity.AdminPendingTicketListActivity">
 
     <Button
         android:id="@+id/view_pending_requests"
