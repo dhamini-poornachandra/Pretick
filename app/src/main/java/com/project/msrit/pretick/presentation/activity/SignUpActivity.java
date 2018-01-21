@@ -141,6 +141,7 @@ public class SignUpActivity extends AppCompatActivity {
         emailId.addTextChangedListener(watcher);
         password.addTextChangedListener(watcher);
         confirmPassword.addTextChangedListener(watcher);
+        getSupportActionBar().hide();
     }
 
     @OnClick(R.id.sign_up_button)
