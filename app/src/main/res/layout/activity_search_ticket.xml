@@ -25,4 +25,131 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Search" />
+
+    <RelativeLayout
+        android:id="@+id/ticket_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/ticket_no_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ticket No: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/ticket_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ticket_no_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/slot_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/end_time_label"
+            android:layout_marginTop="5dp"
+            android:text="Slot: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/slot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/end_time_label"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/slot_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ticket_no_label"
+            android:layout_marginTop="5dp"
+            android:text="Date: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ticket_no_label"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/date_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/phone_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_label"
+            android:layout_marginTop="5dp"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/org_label"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/date_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/start_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_label"
+            android:layout_marginTop="5dp"
+            android:text="Start Time: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_label"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/start_time_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/end_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/start_time_label"
+            android:layout_marginTop="5dp"
+            android:text="End Time: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/start_time_label"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/end_time_label"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ticket_status_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ticket_details"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

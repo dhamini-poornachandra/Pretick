@@ -88,30 +88,36 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public final void onError(Throwable e) {
                         Log.e("Demo", e.getMessage());
+                        Toast.makeText(getApplicationContext(), "Enter valid login details", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onNext(Role role) {
                         loginPreferenceEditor = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE).edit();
                         loginPreferenceEditor.putString("username", phoneNumber.getText().toString()).apply();
-
-//                        SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
-//                        password.setText(sharedPreferences.getString("username", ""));
+                        loginPreferenceEditor.commit();
 
                         switch (role.getRole()) {
                             case "admin":
-                                startActivity(new Intent(getApplicationContext(), FacultyDashboardActivity.class));
+                                startActivity(new Intent(getApplicationContext(), AdminDashboardActivity.class));
+                                break;
+                            case "staff":
+                                startActivity(new Intent(getApplicationContext(), FacultyDashBoardActivity.class));
                                 break;
                             case "guest":
                                 startActivity(new Intent(getApplicationContext(), GuestDashboardActivity.class));
+                                break;
+                            case "student":
+                                startActivity(new Intent(getApplicationContext(), GuestDashboardActivity.class));
+                                break;
+                            case "security":
+                                startActivity(new Intent(getApplicationContext(), SearchTicketActivity.class));
                                 break;
                             default:
                                 Toast.makeText(getApplicationContext(), "Enter valid login details", Toast.LENGTH_LONG).show();
                                 break;
                         }
-
                     }
-
                 });
     }
 

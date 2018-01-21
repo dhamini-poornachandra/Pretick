@@ -5,15 +5,24 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.service.RestService;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by dhamini-poorna-chandra on 28/11/2017.
@@ -45,6 +54,10 @@ public class SignUpActivity extends AppCompatActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
         }
 
+        public boolean isValidEmail(CharSequence target) {
+            return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+        }
+
         @Override
         public void afterTextChanged(Editable s) {
 
@@ -56,7 +69,8 @@ public class SignUpActivity extends AppCompatActivity {
                         !emailId.getText().toString().equals("") &&
                         !password.getText().toString().equals("") &&
                         !confirmPassword.getText().toString().equals("") &&
-                        phoneNumber.getText().toString().length() == 10) {
+                        phoneNumber.getText().toString().length() == 10 &&
+                        isValidEmail(emailId.getText().toString())) {
                     signUpButton.setEnabled(true);
                     signUpButton.setAlpha(1.0f);
                 } else {
@@ -69,7 +83,41 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void validateFields() {
         if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-            //send sign up request
+
+            RestService rs = new RestService();
+            rs.getSignUp(firstName.getText().toString(),
+                    lastName.getText().toString(),
+                    organisationName.getText().toString(),
+                    emailId.getText().toString(),
+                    password.getText().toString(),
+                    "student",
+                    phoneNumber.getText().toString())
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<retrofit2.Response<Void>>() {
+                        @Override
+                        public void onCompleted() {
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(retrofit2.Response<Void> response) {
+                            if (response.code() == HttpsURLConnection.HTTP_CREATED) {
+                                Toast.makeText(SignUpActivity.this, "Sign up success", Toast.LENGTH_LONG).show();
+                                login();
+                            } else {
+                                Snackbar snackbar = Snackbar
+                                        .make(getCurrentFocus(), "Sign up failed", Snackbar.LENGTH_LONG);
+
+                                snackbar.show();
+                            }
+                        }
+
+                    });
         } else {
             Snackbar snackbar = Snackbar
                     .make(getCurrentFocus(), "Passwords don't match", Snackbar.LENGTH_LONG);
