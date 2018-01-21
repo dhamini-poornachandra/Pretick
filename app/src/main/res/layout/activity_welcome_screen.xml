@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:background="#ffff"
+    tools:context="com.project.msrit.pretick.presentation.activity.WelcomeScreenActivity">
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_app_name" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_logo"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_ramaiah_logo" />
+
+    <TextView
+        android:id="@+id/ramaiah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:text="RAMAIAH"
+        android:textColor="#4B0082"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/institue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ramaiah"
+        android:layout_centerHorizontal="true"
+        android:text="INSTITUTE OF TECHNOLOGY"
+        android:textColor="#4B0082"
+        android:textSize="25sp" />
+
+</RelativeLayout>

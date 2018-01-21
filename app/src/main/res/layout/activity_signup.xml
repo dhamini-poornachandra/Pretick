@@ -119,26 +119,22 @@
         </android.support.design.widget.TextInputLayout>
 
         <RadioGroup
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RadioButton
+                android:id="@+id/student"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Student" />
 
-                <RadioButton
-                    android:id="@+id/student"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Student" />
+            <RadioButton
+                android:id="@+id/guest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guest" />
 
-                <RadioButton
-                    android:id="@+id/guest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Guest" />
-            </LinearLayout>
         </RadioGroup>
 
         <android.support.v7.widget.AppCompatButton
