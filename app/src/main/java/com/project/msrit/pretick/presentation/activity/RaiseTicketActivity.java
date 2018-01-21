@@ -63,6 +63,7 @@ public class RaiseTicketActivity extends AppCompatActivity {
     RadioButton fourWheeler;
 
     Calendar myCalendar = Calendar.getInstance();
+    SharedPreferences sharedPreferences;
     HashMap<String, String> contactPersonHash = new HashMap<String, String>();
 
     @Override
@@ -70,7 +71,6 @@ public class RaiseTicketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_raise_ticket);
         ButterKnife.bind(this);
-
 
         List<String> list = new ArrayList<String>();
 
@@ -83,6 +83,12 @@ public class RaiseTicketActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         inviterSpinner.setAdapter(dataAdapter);
+
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+
+        if (sharedPreferences.getString("role", "").equals("staff")) {
+            inviterSpinner.setEnabled(false);
+        }
     }
 
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -156,13 +162,13 @@ public class RaiseTicketActivity extends AppCompatActivity {
     public void raiseTicket() {
 
         if (validate()) {
-            SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
             RestService rs = new RestService();
             rs.postRaiseTicket(dateText.getText().toString(),
                     startTimeText.getText().toString(),
                     endTimeText.getText().toString(),
-                    contactPersonHash.get(inviterSpinner.getSelectedItem().toString()),
+                    inviterSpinner.isEnabled() ? contactPersonHash.get(inviterSpinner.getSelectedItem().toString())
+                            : sharedPreferences.getString("username", "9739626595"),
                     twoWheeler.isChecked() ? "twowheeler" : "fourwheeler",
                     orgName.getText().toString(),
                     sharedPreferences.getString("username", "9739626595"))

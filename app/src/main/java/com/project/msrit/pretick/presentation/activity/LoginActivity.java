@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         phoneNumber.addTextChangedListener(watcher);
         password.addTextChangedListener(watcher);
+        getSupportActionBar().hide();
     }
 
     private void login() {
@@ -95,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onNext(Role role) {
                         loginPreferenceEditor = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE).edit();
                         loginPreferenceEditor.putString("username", phoneNumber.getText().toString()).apply();
+                        loginPreferenceEditor.putString("role", role.getRole());
                         loginPreferenceEditor.commit();
 
                         switch (role.getRole()) {
