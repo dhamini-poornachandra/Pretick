@@ -115,4 +115,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(android.R.string.no, null).show();
     }
+
+    @OnClick(R.id.register_new_member)
+    public void registerNewMember() {
+        startActivity(new Intent(AdminDashboardActivity.this, AdminFacultySignUpActivity.class));
+    }
 }
