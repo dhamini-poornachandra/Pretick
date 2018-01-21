@@ -4,12 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
@@ -18,6 +16,7 @@ import com.project.msrit.pretick.data.network.service.RestService;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -25,6 +24,10 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class FacultyDashBoardActivity extends AppCompatActivity {
+
+    @BindView(R.id.view)
+    RelativeLayout view;
+
     SharedPreferences sharedPreferences;
 
     @Override
@@ -48,7 +51,7 @@ public class FacultyDashBoardActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("failed faculty pending", "failed");
+                        Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -59,7 +62,7 @@ public class FacultyDashBoardActivity extends AppCompatActivity {
 
                             startActivity(new Intent(getApplicationContext(), FacultyPendingTicketsListActivity.class));
                         } else {
-                            Toast.makeText(FacultyDashBoardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                            Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
@@ -79,7 +82,7 @@ public class FacultyDashBoardActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("failed faculty approved", "failed");
+                        Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -90,7 +93,7 @@ public class FacultyDashBoardActivity extends AppCompatActivity {
 
                             startActivity(new Intent(FacultyDashBoardActivity.this, FacultyApprovedTicketsListActivity.class));
                         } else {
-                            Toast.makeText(FacultyDashBoardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                            Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
