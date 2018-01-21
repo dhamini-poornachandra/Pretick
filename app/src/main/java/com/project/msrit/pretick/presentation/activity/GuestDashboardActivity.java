@@ -4,8 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
@@ -16,6 +18,7 @@ import com.project.msrit.pretick.data.network.service.RestService;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -24,6 +27,8 @@ import rx.schedulers.Schedulers;
 
 public class GuestDashboardActivity extends AppCompatActivity {
 
+    @BindView(R.id.view)
+    RelativeLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +54,19 @@ public class GuestDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(GuestDashboardActivity.this,
-                                "Failed to get contact person details", Toast.LENGTH_LONG).show();
+                        Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onNext(List<Ticketstatus> response) {
+                        if (response != null) {
+                            GlobalVariable.getInstance().setGuestTicketStatus(response);
+                            startActivity(new Intent(getApplicationContext(), GuestTicketStatusListActivity.class));
 
-                        GlobalVariable.getInstance().setGuestTicketStatus(response);
+                        } else {
 
-                        startActivity(new Intent(getApplicationContext(), GuestTicketStatusListActivity.class));
+                            Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
+                        }
 
                     }
 

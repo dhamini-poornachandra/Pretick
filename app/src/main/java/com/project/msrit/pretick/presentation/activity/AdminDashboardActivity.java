@@ -3,10 +3,10 @@ package com.project.msrit.pretick.presentation.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
@@ -15,6 +15,7 @@ import com.project.msrit.pretick.data.network.service.RestService;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
@@ -26,6 +27,9 @@ import rx.schedulers.Schedulers;
  */
 
 public class AdminDashboardActivity extends AppCompatActivity {
+
+    @BindView(R.id.view)
+    RelativeLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public final void onError(Throwable e) {
-                        Log.e("Demo", e.getMessage());
+                        Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -59,7 +63,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
                             GlobalVariable.getInstance().setAdminPendingTicketStatus(ticketStatus);
                             startActivity(new Intent(getApplicationContext(), AdminPendingTicketListActivity.class));
                         } else {
-                            Toast.makeText(AdminDashboardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                            Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
@@ -79,7 +83,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("failed faculty approved", "failed");
+                        Snackbar.make(getCurrentFocus(), "No tickets yet", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -90,7 +94,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
                             startActivity(new Intent(AdminDashboardActivity.this, AdminApprovedTicketListActivity.class));
                         } else {
-                            Toast.makeText(AdminDashboardActivity.this, "No tickets yet", Toast.LENGTH_LONG).show();
+                            Snackbar.make(getCurrentFocus(), "No tickets yet", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
