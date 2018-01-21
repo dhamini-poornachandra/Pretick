@@ -122,23 +122,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RadioButton
+                android:id="@+id/faculty"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Faculty" />
 
-                <RadioButton
-                    android:id="@+id/faculty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Faculty" />
+            <RadioButton
+                android:id="@+id/security"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Security" />
 
-                <RadioButton
-                    android:id="@+id/security"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Security" />
-            </LinearLayout>
         </RadioGroup>
 
         <android.support.v7.widget.AppCompatButton
