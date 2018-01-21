@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
@@ -44,6 +45,10 @@ public class SignUpActivity extends AppCompatActivity {
     EditText password;
     @BindView(R.id.sign_up_button)
     Button signUpButton;
+    @BindView(R.id.student)
+    RadioButton student;
+    @BindView(R.id.guest)
+    RadioButton guest;
 
     private final TextWatcher watcher = new TextWatcher() {
         @Override
@@ -90,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity {
                     organisationName.getText().toString(),
                     emailId.getText().toString(),
                     password.getText().toString(),
-                    "student",
+                    student.isChecked() ? "student" : "guest",
                     phoneNumber.getText().toString())
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -110,19 +115,13 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "Sign up success", Toast.LENGTH_LONG).show();
                                 login();
                             } else {
-                                Snackbar snackbar = Snackbar
-                                        .make(getCurrentFocus(), "Sign up failed", Snackbar.LENGTH_LONG);
-
-                                snackbar.show();
+                                Snackbar.make(getCurrentFocus(), "Sign up failed", Snackbar.LENGTH_LONG).show();
                             }
                         }
 
                     });
         } else {
-            Snackbar snackbar = Snackbar
-                    .make(getCurrentFocus(), "Passwords don't match", Snackbar.LENGTH_LONG);
-
-            snackbar.show();
+            Snackbar.make(getCurrentFocus(), "Passwords don't match", Snackbar.LENGTH_LONG).show();
         }
 
     }
