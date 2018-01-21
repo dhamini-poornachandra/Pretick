@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -127,9 +128,17 @@ public class RaiseTicketActivity extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 if (isStartTime) {
-                    startTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                    if (selectedHour < 8) {
+                        Snackbar.make(getCurrentFocus(), "Parking opens at 8AM", Snackbar.LENGTH_LONG).show();
+                    } else {
+                        startTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                    }
                 } else {
-                    endTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                    if (selectedHour > 19) {
+                        Snackbar.make(getCurrentFocus(), "Parking closes at 8PM", Snackbar.LENGTH_LONG).show();
+                    } else {
+                        endTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
+                    }
                 }
             }
         }, 0, 0, true);//Yes 24 hour time
