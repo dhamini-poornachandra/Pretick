@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
 import com.project.msrit.pretick.R;
+import com.project.msrit.pretick.data.network.model.ContactPerson;
 import com.project.msrit.pretick.data.network.model.GlobalVariable;
 import com.project.msrit.pretick.data.network.model.Ticketstatus;
 import com.project.msrit.pretick.data.network.service.RestService;
@@ -94,6 +95,37 @@ public class FacultyDashBoardActivity extends AppCompatActivity {
                             startActivity(new Intent(FacultyDashBoardActivity.this, FacultyApprovedTicketsListActivity.class));
                         } else {
                             Snackbar.make(view, "No tickets yet", Snackbar.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
+    }
+
+    @OnClick(R.id.raise_ticket)
+    public void raiseTicket() {
+        RestService rs = new RestService();
+        rs.getContactPersons()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<ContactPerson>>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Snackbar.make(view, "Failed to get contact person details", Snackbar.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onNext(List<ContactPerson> response) {
+                        if (response != null) {
+                            GlobalVariable.getInstance().setContactPersons(response);
+                            Intent intent = new Intent(getApplicationContext(), RaiseTicketActivity.class);
+                            intent.putExtra("faculty", true);
+                            startActivity(intent);
+                        } else {
+                            Snackbar.make(view, "Failed to get contact person details", Snackbar.LENGTH_LONG).show();
                         }
                     }
 
