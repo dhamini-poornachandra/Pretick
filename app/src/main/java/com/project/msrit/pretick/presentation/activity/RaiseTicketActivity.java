@@ -2,6 +2,7 @@ package com.project.msrit.pretick.presentation.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -144,38 +145,59 @@ public class RaiseTicketActivity extends AppCompatActivity {
 
     @OnClick(R.id.create_ticket)
     public void raiseTicket() {
-        SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
-        RestService rs = new RestService();
-        rs.postRaiseTicket(dateText.getText().toString(),
-                startTimeText.getText().toString(),
-                endTimeText.getText().toString(),
-                contactPersonHash.get(inviterSpinner.getSelectedItem().toString()),
-                twoWheeler.isChecked() ? "twowheeler" : "fourwheeler",
-                orgName.getText().toString(),
-                sharedPreferences.getString("username", "9739626595"))
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Response<Void>>() {
-                    @Override
-                    public void onCompleted() {
-                        Toast.makeText(RaiseTicketActivity.this, "Raise ticket success", Toast.LENGTH_LONG).show();
-                    }
+        if (validate()) {
+            SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(RaiseTicketActivity.this, "Raise ticket failed", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onNext(retrofit2.Response<Void> response) {
-                        if (response.code() == HttpsURLConnection.HTTP_CREATED) {
+            RestService rs = new RestService();
+            rs.postRaiseTicket(dateText.getText().toString(),
+                    startTimeText.getText().toString(),
+                    endTimeText.getText().toString(),
+                    contactPersonHash.get(inviterSpinner.getSelectedItem().toString()),
+                    twoWheeler.isChecked() ? "twowheeler" : "fourwheeler",
+                    orgName.getText().toString(),
+                    sharedPreferences.getString("username", "9739626595"))
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<Response<Void>>() {
+                        @Override
+                        public void onCompleted() {
                             Toast.makeText(RaiseTicketActivity.this, "Raise ticket success", Toast.LENGTH_LONG).show();
-                        } else {
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
                             Toast.makeText(RaiseTicketActivity.this, "Raise ticket failed", Toast.LENGTH_LONG).show();
                         }
-                    }
 
-                });
+                        @Override
+                        public void onNext(retrofit2.Response<Void> response) {
+                            if (response.code() == HttpsURLConnection.HTTP_CREATED) {
+                                Toast.makeText(RaiseTicketActivity.this, "Raise ticket success", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(RaiseTicketActivity.this, GuestDashboardActivity.class));
+                            } else {
+                                Toast.makeText(RaiseTicketActivity.this, "Raise ticket failed", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    });
+        }
+
+    }
+
+    private Boolean validate() {
+        if (!dateText.getText().toString().equals("Date") && !startTimeText.getText().toString().equals("Start Time") &&
+                !endTimeText.getText().toString().equals("End Time") && !orgName.getText().toString().isEmpty()) {
+            if (endTimeText.getText().toString().compareTo(startTimeText.getText().toString()) < 0) {
+                Toast.makeText(this, "End time should be greater than start time", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        } else {
+            //please enter all fields
+            Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 }

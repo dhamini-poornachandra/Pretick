@@ -1,8 +1,10 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -91,5 +93,20 @@ public class GuestDashboardActivity extends AppCompatActivity {
 
                 });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this)
+                .setMessage("Exit Application?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        startActivity(new Intent(GuestDashboardActivity.this, LoginActivity.class));
+                        finishAffinity();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null).show();
     }
 }

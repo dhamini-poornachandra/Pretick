@@ -1,5 +1,6 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -169,6 +170,8 @@ public class FacultyTicketDetailsActivity extends AppCompatActivity {
                         if (response.code() == HttpsURLConnection.HTTP_NOT_MODIFIED) {
                             Toast.makeText(FacultyTicketDetailsActivity.this, "Approval failed " + response.code(), Toast.LENGTH_LONG).show();
                         } else {
+                            approve.setVisibility(View.GONE);
+                            reject.setVisibility(View.GONE);
                             referenceApproval.setText(approvalStatus.toUpperCase());
                             Toast.makeText(FacultyTicketDetailsActivity.this, "Approval success " + response.code(), Toast.LENGTH_LONG).show();
                         }
@@ -178,6 +181,12 @@ public class FacultyTicketDetailsActivity extends AppCompatActivity {
                     }
 
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(FacultyTicketDetailsActivity.this, FacultyDashBoardActivity.class));
+        finishAffinity();
     }
 }
 

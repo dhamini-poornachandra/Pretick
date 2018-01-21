@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -52,6 +54,10 @@ public class SignUpActivity extends AppCompatActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
         }
 
+        public boolean isValidEmail(CharSequence target) {
+            return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+        }
+
         @Override
         public void afterTextChanged(Editable s) {
 
@@ -63,7 +69,8 @@ public class SignUpActivity extends AppCompatActivity {
                         !emailId.getText().toString().equals("") &&
                         !password.getText().toString().equals("") &&
                         !confirmPassword.getText().toString().equals("") &&
-                        phoneNumber.getText().toString().length() == 10) {
+                        phoneNumber.getText().toString().length() == 10 &&
+                        isValidEmail(emailId.getText().toString())) {
                     signUpButton.setEnabled(true);
                     signUpButton.setAlpha(1.0f);
                 } else {
@@ -103,7 +110,10 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "Sign up success", Toast.LENGTH_LONG).show();
                                 login();
                             } else {
-                                Toast.makeText(SignUpActivity.this, "Sign up failed", Toast.LENGTH_LONG).show();
+                                Snackbar snackbar = Snackbar
+                                        .make(getCurrentFocus(), "Sign up failed", Snackbar.LENGTH_LONG);
+
+                                snackbar.show();
                             }
                         }
 

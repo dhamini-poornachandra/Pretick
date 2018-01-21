@@ -1,5 +1,6 @@
 package com.project.msrit.pretick.presentation.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -171,6 +172,8 @@ public class AdminTicketDetailsActivity extends AppCompatActivity {
                         if (response.code() == HttpsURLConnection.HTTP_NOT_MODIFIED) {
                             Toast.makeText(AdminTicketDetailsActivity.this, "Approval failed " + response.code(), Toast.LENGTH_LONG).show();
                         } else {
+                            approve.setVisibility(View.GONE);
+                            reject.setVisibility(View.GONE);
                             adminApproval.setText(approvalStatus.toUpperCase());
                             Toast.makeText(AdminTicketDetailsActivity.this, "Approval success " + response.code(), Toast.LENGTH_LONG).show();
                         }
@@ -180,5 +183,11 @@ public class AdminTicketDetailsActivity extends AppCompatActivity {
                     }
 
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(AdminTicketDetailsActivity.this, AdminDashboardActivity.class));
+        finishAffinity();
     }
 }

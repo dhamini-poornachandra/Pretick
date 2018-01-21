@@ -35,7 +35,15 @@ public class AdminPendingTicketListActivity extends AppCompatActivity implements
     public void onItemClick(View view, int position) {
         Intent intent = new Intent(this, AdminTicketDetailsActivity.class);
         intent.putExtra("row", String.valueOf(position));
+        intent.putExtra("viewOnly", false);
         startActivity(intent);
 //        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onResume() {
+        adapter.notifyDataSetChanged();
+        super.onResume();
+    }
+
 }
