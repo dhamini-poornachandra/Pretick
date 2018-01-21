@@ -134,7 +134,7 @@ public class RaiseTicketActivity extends AppCompatActivity {
                         startTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
                     }
                 } else {
-                    if (selectedHour > 19) {
+                    if (selectedHour >= 20) {
                         Snackbar.make(getCurrentFocus(), "Parking closes at 8PM", Snackbar.LENGTH_LONG).show();
                     } else {
                         endTimeText.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
@@ -195,8 +195,8 @@ public class RaiseTicketActivity extends AppCompatActivity {
     }
 
     private Boolean validate() {
-        if (!dateText.getText().toString().equals("Date") && !startTimeText.getText().toString().equals("Start Time") &&
-                !endTimeText.getText().toString().equals("End Time") && !orgName.getText().toString().isEmpty()) {
+        if (!dateText.getText().toString().equals("Date: ") && !startTimeText.getText().toString().equals("Start Time: ") &&
+                !endTimeText.getText().toString().equals("End Time: ") && !orgName.getText().toString().isEmpty()) {
             if (endTimeText.getText().toString().compareTo(startTimeText.getText().toString()) < 0) {
                 Toast.makeText(this, "End time should be greater than start time", Toast.LENGTH_SHORT).show();
                 return false;
