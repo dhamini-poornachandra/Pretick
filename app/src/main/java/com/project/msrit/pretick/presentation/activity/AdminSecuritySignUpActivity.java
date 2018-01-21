@@ -24,7 +24,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class AdminFacultySignUpActivity extends AppCompatActivity {
+public class AdminSecuritySignUpActivity extends AppCompatActivity {
 
     @BindView(R.id.first_name)
     EditText firstName;
@@ -41,8 +41,8 @@ public class AdminFacultySignUpActivity extends AppCompatActivity {
     @BindView(R.id.sign_up_button)
     Button signUpButton;
 
-    @BindView(R.id.admin)
-    RadioButton admin;
+    @BindView(R.id.faculty)
+    RadioButton faculty;
 
     private final TextWatcher watcher = new TextWatcher() {
         @Override
@@ -89,7 +89,7 @@ public class AdminFacultySignUpActivity extends AppCompatActivity {
                     organisationName.getText().toString(),
                     emailId.getText().toString(),
                     password.getText().toString(),
-                    admin.isChecked() ? "admin" : "staff",
+                    faculty.isChecked() ? "staff" : "security",
                     phoneNumber.getText().toString())
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -125,7 +125,7 @@ public class AdminFacultySignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_faculty_sign_up);
+        setContentView(R.layout.activity_admin_security_sign_up);
         ButterKnife.bind(this);
         firstName.addTextChangedListener(watcher);
         lastName.addTextChangedListener(watcher);
