@@ -29,4 +29,19 @@
         android:text="View Approved Requests"
         android:textColor="#fff" />
 
+    <Button
+        android:id="@+id/raise_ticket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/view_pending_requests"
+        android:layout_alignLeft="@+id/view_pending_requests"
+        android:layout_alignRight="@+id/view_pending_requests"
+        android:layout_alignStart="@+id/view_pending_requests"
+        android:layout_below="@+id/view_approved_requests"
+        android:layout_marginTop="71dp"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:text="raise ticket"
+        android:textColor="#fff" />
+
 </RelativeLayout>

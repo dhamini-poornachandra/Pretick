@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.project.msrit.pretick.R;
 import com.project.msrit.pretick.data.network.model.ContactPerson;
@@ -92,10 +91,12 @@ public class GuestDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<ContactPerson> response) {
-                        if(response != null){
+                        if (response != null) {
                             GlobalVariable.getInstance().setContactPersons(response);
-                            startActivity(new Intent(getApplicationContext(), RaiseTicketActivity.class));
-                        }else{
+                            Intent intent = new Intent(getApplicationContext(), RaiseTicketActivity.class);
+                            intent.putExtra("faculty", false);
+                            startActivity(intent);
+                        } else {
                             Snackbar.make(view, "Failed to get contact person details", Snackbar.LENGTH_LONG).show();
                         }
                     }

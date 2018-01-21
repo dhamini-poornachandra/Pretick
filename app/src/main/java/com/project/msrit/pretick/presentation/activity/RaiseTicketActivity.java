@@ -183,7 +183,12 @@ public class RaiseTicketActivity extends AppCompatActivity {
                         public void onNext(retrofit2.Response<Void> response) {
                             if (response.code() == HttpsURLConnection.HTTP_CREATED) {
                                 Toast.makeText(RaiseTicketActivity.this, "Raise ticket success", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(RaiseTicketActivity.this, GuestDashboardActivity.class));
+                                if (getIntent().getBooleanExtra("faculty", false)) {
+                                    startActivity(new Intent(RaiseTicketActivity.this, FacultyDashBoardActivity.class));
+                                } else {
+                                    startActivity(new Intent(RaiseTicketActivity.this, GuestDashboardActivity.class));
+                                }
+
                             } else {
                                 Toast.makeText(RaiseTicketActivity.this, "Raise ticket failed", Toast.LENGTH_LONG).show();
                             }
