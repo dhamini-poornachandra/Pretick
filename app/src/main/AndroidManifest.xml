@@ -35,7 +35,7 @@
         <activity android:name=".presentation.activity.FacultyTicketDetailsActivity" />
         <activity android:name=".presentation.activity.AdminApprovedTicketListActivity" />
         <activity android:name=".presentation.activity.GuestTicketDetailsActivity" />
-        <activity android:name=".presentation.activity.AdminFacultySignUpActivity"></activity>
+        <activity android:name=".presentation.activity.AdminSecuritySignUpActivity"></activity>
     </application>
 
 </manifest>

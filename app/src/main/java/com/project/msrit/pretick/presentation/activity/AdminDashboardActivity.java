@@ -118,6 +118,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     @OnClick(R.id.register_new_member)
     public void registerNewMember() {
-        startActivity(new Intent(AdminDashboardActivity.this, AdminFacultySignUpActivity.class));
+        startActivity(new Intent(AdminDashboardActivity.this, AdminSecuritySignUpActivity.class));
     }
 }
