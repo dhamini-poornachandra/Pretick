@@ -87,16 +87,17 @@ public class GuestDashboardActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(GuestDashboardActivity.this,
-                                "Failed to get contact person details", Toast.LENGTH_LONG).show();
+                        Snackbar.make(view, "Failed to get contact person details", Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onNext(List<ContactPerson> response) {
-                        GlobalVariable.getInstance().setContactPersons(response);
-                        startActivity(new Intent(getApplicationContext(), RaiseTicketActivity.class));
-
-
+                        if(response != null){
+                            GlobalVariable.getInstance().setContactPersons(response);
+                            startActivity(new Intent(getApplicationContext(), RaiseTicketActivity.class));
+                        }else{
+                            Snackbar.make(view, "Failed to get contact person details", Snackbar.LENGTH_LONG).show();
+                        }
                     }
 
                 });
