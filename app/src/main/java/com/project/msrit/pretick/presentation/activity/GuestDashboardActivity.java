@@ -109,7 +109,7 @@ public class GuestDashboardActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         new AlertDialog.Builder(this)
-                .setMessage("Exit Application?")
+                .setMessage("Are you sure you want to logout?")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int whichButton) {
