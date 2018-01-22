@@ -21,8 +21,12 @@
         android:id="@+id/set_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/start_time"
+        android:layout_alignLeft="@+id/start_time"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/start_time"
+        android:layout_alignStart="@+id/start_time"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/date"
         android:text="Set Date" />
 
     <TextView
@@ -41,37 +45,37 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/start_time_text"
         android:layout_alignBottom="@+id/start_time_text"
-        android:layout_toEndOf="@+id/start_time_text"
-        android:layout_toRightOf="@+id/start_time_text"
+        android:layout_toEndOf="@+id/vehicle_type"
+        android:layout_toRightOf="@+id/vehicle_type"
         android:text="Start Time" />
 
     <TextView
         android:id="@+id/end_time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/start_time"
-        android:layout_alignBottom="@+id/start_time"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/start_time"
-        android:layout_toRightOf="@+id/start_time"
+        android:layout_alignBaseline="@+id/end_time"
+        android:layout_alignBottom="@+id/end_time"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:text="End Time: " />
 
     <Button
         android:id="@+id/end_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/start_time"
-        android:layout_alignBottom="@+id/start_time"
-        android:layout_toEndOf="@+id/end_time_text"
-        android:layout_toRightOf="@+id/end_time_text"
+        android:layout_alignEnd="@+id/start_time"
+        android:layout_alignLeft="@+id/start_time"
+        android:layout_alignRight="@+id/start_time"
+        android:layout_alignStart="@+id/start_time"
+        android:layout_below="@+id/start_time"
+        android:layout_marginTop="20dp"
         android:text="End Time" />
 
     <TextView
         android:id="@+id/invitee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/start_time_text"
+        android:layout_below="@id/end_time_text"
         android:layout_marginTop="50dp"
         android:text="Invited By: " />
 
@@ -79,9 +83,11 @@
         android:id="@+id/inviter_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/create_ticket"
-        android:layout_alignStart="@+id/create_ticket"
-        android:layout_alignTop="@+id/invitee" />
+        android:layout_alignEnd="@+id/end_time"
+        android:layout_alignRight="@+id/end_time"
+        android:layout_alignTop="@+id/invitee"
+        android:layout_toEndOf="@+id/vehicle_type"
+        android:layout_toRightOf="@+id/vehicle_type" />
 
     <RadioGroup
         android:id="@+id/vehicle_type"
@@ -108,8 +114,10 @@
         android:id="@+id/organisation_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/vehicle_type"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:hint="Organisation Name"
         android:inputType="text" />
 
@@ -117,9 +125,9 @@
         android:id="@+id/create_ticket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/organisation_name"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="13dp"
         android:background="@color/colorPrimary"
         android:padding="10dp"
         android:text="Raise Ticket"
